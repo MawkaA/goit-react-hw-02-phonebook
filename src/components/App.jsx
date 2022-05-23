@@ -1,9 +1,9 @@
-import {Component} from 'react';
+import React,{Component} from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 // import Filter from './Filter/Filter';
 
-export default class App extends Component {
+class App extends Component {
   state = {
     contacts: [],
     filter: '',
@@ -39,4 +39,4 @@ export default class App extends Component {
     );   
 };   
 };
- 
+export default App;
