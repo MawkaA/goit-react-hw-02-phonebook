@@ -3,7 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 // import Filter from './Filter/Filter';
 
-class App extends Component {
+export default class App extends Component {
   state = {
     contacts: [],
     filter: '',
@@ -39,4 +39,3 @@ class App extends Component {
     );   
 };   
 };
-export default App;

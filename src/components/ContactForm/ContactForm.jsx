@@ -10,6 +10,11 @@ const INITIAL_STATE = {
 
 class ContactForm extends Component {
  state= INITIAL_STATE
+ static propTypes = {
+     onAdd: PropTypes.func.isRequired,
+     name: PropTypes.string.isRequired,
+     number: PropTypes.string.isRequired,
+ }
 
  handleChangeForm=({target})=>{
     const {name,value}=target
@@ -24,6 +29,7 @@ handleFormSubmit=(e)=>{
 
     if(!isValidForm) return
     onAdd({id:nanoid(),name,number});
+    this.resetForm();
 }
 validateForm=()=>{
   const {name,number}=this.state;
@@ -41,12 +47,13 @@ resetForm=()=>this.setState(INITIAL_STATE);
         const {name,number}=this.state;
         
         return(
-            <form className={css.form}>
+            <form className={css.form} onSubmit={this.handleFormSubmit}>
             <label className={css.label}>Name</label>
             <input type="text" 
                    className={css.input}
                    name="name"
                    value={name}
+                   onChange={this.handleChangeForm}
                    placeholder="Enter name"
                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -57,20 +64,16 @@ resetForm=()=>this.setState(INITIAL_STATE);
                    name="number"
                    value={number}
                    type="tel"
+                   onChange={this.handleChangeForm}
                    placeholder="Enter phone number"
                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                    required></input>
-            <button className={css.button} type="submit" 
-            >Add Contact</button>
+            <button className={css.button} type="submit">Add Contact</button>
         </form>)
         
         } 
 } 
 
-
-ContactForm.propTypes = {
-    INITIAL_STATE: PropTypes.shape(PropTypes.string.isRequired).isRequired,
-  };
   
 export default ContactForm;

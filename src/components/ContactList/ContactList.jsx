@@ -22,13 +22,15 @@ const ContactList = ({contacts,onRemove})=>{
     )
 }
 
-ContactListItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    onRemove: PropTypes.func.isRequired,
-    }
+
 ContactList.propTypes = {
-    contacts: PropTypes.array(PropTypes.string.isRequired).isRequired,
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired
+        }),
+        ),
     onRemove: PropTypes.func.isRequired,
 }
 
