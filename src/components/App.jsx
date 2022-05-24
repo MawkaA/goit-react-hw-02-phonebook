@@ -4,6 +4,7 @@ import initialContacts from './ContactList/Contacts.json';
 import ContactList from './ContactList/ContactList';
 import {nanoid} from 'nanoid';
 import Filter from './Filter/Filter';
+import'./App.css';
 
 class App extends Component {
   state = {
@@ -52,9 +53,9 @@ render() {
   const visibleContacts = this.getVisibleContacts();
     return(
         <>
-          <h1>Phonebook</h1>
-          <ContactForm onSubmit={this.addContact} />
-          <h2>Contacts</h2>
+          <h1 className="title">Phonebook</h1>
+          <ContactForm className="contact" onSubmit={this.addContact} />
+          <h2 className="title">Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter}/>
           <ContactList contacts = { visibleContacts }
             onDeleteContact = { this.deleteContact }/> 

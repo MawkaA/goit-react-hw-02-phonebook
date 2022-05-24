@@ -3,7 +3,7 @@ import css from './Filter.module.css';
 
 const Filter = ({ value, onChange }) => (
     <label className={ css.label}>
-        Name filter <input type="text" value={value} onChange={onChange} />
+        Find contacts by name<input className={ css.input} type="text" value={value} onChange={onChange} placeholder="Enter name" />
     </label>
 );
 
